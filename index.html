@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FCC-WeatherApp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/styles.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+  <div class="bodywrap">
+    <h1><span class="cityName">City Name's</span> Weather Forecast</h1>
+    <h3><span class="date"></span></h3>
+    <form id="weather_status_form">
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" /></br>
+      <label for="units">Units</label>
+      <button class="unitChanger imperial">Change Unit to <span>Celsius</span></button>
+      <button id="subForm" type="submit">Change</button>
+    </form>
+    <section id="todaysWeather">
+      <figure id="weatherNow">
+        <img class="icon" src="" alt="weather icon">  <span class="currentDegrees"></span>&deg;<span class="unit"></span>
+
+        <figcaption>
+          <span class="description"></span>
+          <h3>High: <span class="high"></span>&deg;<span class="unit"></span></h3>  |  <h3>Low: <span class="low"></span>&deg;<span class="unit"></span></h3>
+        </figcaption>
+      </figure>
+    </section>
+    <section id="extendedForecast">
+      <figure>
+        <img src="" alt="weather image">
+        <figcaption>
+          <span class="currentDegrees">58</span>&deg;<span class="unit">F</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="" alt="weather image">
+        <figcaption>
+          <span class="currentDegrees">58</span>&deg;<span class="unit">F</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="" alt="weather image">
+        <figcaption>
+          <span class="currentDegrees">58</span>&deg;<span class="unit">F</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="" alt="weather image">
+        <figcaption>
+          <span class="currentDegrees">58</span>&deg;<span class="unit">F</span>
+        </figcaption>
+      </figure>
+    </section>
+  </div><!--end bodywrap-->
+</body>
+</html>
