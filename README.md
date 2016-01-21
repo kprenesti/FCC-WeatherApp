@@ -1,4 +1,4 @@
-##FreeCodeCamp's 'Show the Local Weather'
+##[FreeCodeCamp's 'Show the Local Weather'](http://www.freecodecamp.com/challenges/show-the-local-weather)
 
 This project required the use of an ajax call to the Open Weather Map API. No step-by-step instructions were give, rather below you'll find the user stories required.
 
