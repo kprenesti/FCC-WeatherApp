@@ -45,6 +45,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+* {
+  box-sizing: border-box; }
+
 .bodywrap {
   min-height: 100vh;
   width: 100%;
@@ -61,12 +64,44 @@ table {
     color: #666665; }
 
 #weatherNow {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   width: 50%;
-  height: 300px;
+  height: 200px;
   background-color: rgba(0, 0, 0, 0.2); }
 
-label, input, button {
+.promptCity {
+  display: none;
+  color: red;
+  font-weight: bold; }
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-bottom: 20px;
+  height: 35px;
+  overflow: hidden; }
+
+select {
+  font-size: 1em; }
+
+input, select {
+  height: 100%;
+  padding: 5px;
+  display: block;
   float: left; }
+
+input {
+  font-size: 1.2em; }
+
+button#subForm {
+  display: block;
+  height: 100%;
+  float: left;
+  font-size: 1em; }
 
 /*# sourceMappingURL=styles.css.map */

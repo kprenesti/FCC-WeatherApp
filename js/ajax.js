@@ -7,7 +7,6 @@ $(document).ready(function() {
           latitude = Position.coords.latitude;
           longitude = Position.coords.longitude;
           console.log('latitude: ' + latitude, 'longitude: '+ longitude);
-
           ajaxWithGeo(latitude, longitude);
         });
       } else {
