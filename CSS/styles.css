@@ -48,60 +48,135 @@ table {
 * {
   box-sizing: border-box; }
 
+:root {
+  font-size: 16px; }
+
 .bodywrap {
   min-height: 100vh;
   width: 100%;
-  background-repeat: no-repeat;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/16/Appearance_of_sky_for_weather_forecast,_Dhaka,_Bangladesh.JPG");
   background-size: cover;
-  background-position: center; }
+  background-repeat: no-repeat;
+  color: #666; }
   .bodywrap h1 {
-    font-size: 3em;
-    text-align: center;
-    padding-top: 60px;
-    padding-bottom: 20px;
-    font-family: sans-serif;
-    font-weight: bold;
-    color: #666665; }
+    font-size: 3rem; }
+  .bodywrap h2 {
+    font-size: 2.5rem; }
+  .bodywrap h3 {
+    font-size: 2rem; }
+  .bodywrap h4 {
+    font-size: 1.5rem; }
+  .bodywrap p {
+    font-size: 1rem; }
+  .bodywrap .identifier, .bodywrap .updated {
+    text-align: center; }
+  .bodywrap .identifier {
+    padding-top: 10px; }
+  .bodywrap .updated {
+    padding-top: 5px; }
 
-#weatherNow {
-  display: flex;
-  justify-content: center;
+#todaysWeather {
+  width: 80vw;
   margin: 0 auto;
-  width: 50%;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: white;
+  overflow: hidden;
+  border: 1px solid #666;
+  border-top: 0;
+  border-bottom: 2px solid #666; }
+  #todaysWeather #presently {
+    padding: 20px;
+    width: 80%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto; }
+    #todaysWeather #presently h1 {
+      text-align: center; }
+    #todaysWeather #presently img.icon {
+      width: 18%;
+      height: auto;
+      margin: 0 41%;
+      padding: 10px; }
+    #todaysWeather #presently h2 {
+      text-align: center; }
 
-.promptCity {
-  display: none;
-  color: red;
-  font-weight: bold; }
+footer {
+  background-color: #5489B6;
+  padding: 20px;
+  overflow: hidden;
+  border-top: 2px solid #666; }
+  footer p:first-child {
+    text-align: center;
+    padding-bottom: 20px; }
+  footer p:nth-child(2) {
+    float: left; }
+  footer p:last-child {
+    float: right; }
+  footer a {
+    color: white;
+    text-decoration: none; }
 
-form {
+header {
+  height: 160px;
+  background-color: #5489B6;
+  color: white;
+  border-bottom: 2px solid #666; }
+  header #weather_status_form {
+    height: 20px;
+    padding-top: 30px;
+    text-align: center; }
+    header #weather_status_form span.checkboxLabel {
+      font-size: 1.2em;
+      font-weight: bold; }
+
+#forecastHolder {
+  max-width: 80vw;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-  margin-bottom: 20px;
-  height: 35px;
-  overflow: hidden; }
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 950px;
+  border: 1px solid #666; }
+  #forecastHolder .dayHolder {
+    display: block;
+    float: left;
+    width: 25%;
+    height: 100%;
+    background-color: white;
+    border-right: 1px solid #666; }
+    #forecastHolder .dayHolder:last-child {
+      border-right: 0; }
+    #forecastHolder .dayHolder .AM, #forecastHolder .dayHolder .PM {
+      width: 100%;
+      height: 50%;
+      padding: 10px; }
+    #forecastHolder .dayHolder .AM > .dayName {
+      text-align: center; }
+    #forecastHolder .dayHolder .AM > .icon {
+      width: 18%;
+      height: auto;
+      margin: 0 41%;
+      padding: 10px; }
+    #forecastHolder .dayHolder .PM h2 {
+      text-align: center; }
+    #forecastHolder .dayHolder .PM > .icon {
+      width: 18%;
+      height: auto;
+      margin: 0 41%;
+      padding: 10px; }
 
-select {
-  font-size: 1em; }
+.dayMessage, .nightMessage {
+  font-size: 1.2rem; }
 
-input, select {
-  height: 100%;
-  padding: 5px;
-  display: block;
-  float: left; }
-
-input {
-  font-size: 1.2em; }
-
-button#subForm {
-  display: block;
-  height: 100%;
-  float: left;
-  font-size: 1em; }
+@media (max-width: 760px) {
+  #forecastHolder {
+    height: auto; }
+    #forecastHolder > .dayHolder {
+      width: 100%;
+      height: auto;
+      float: none;
+      margin-bottom: 10px; }
+      #forecastHolder > .dayHolder > .AM, #forecastHolder > .dayHolder > .PM {
+        width: 49%;
+        float: left; } }
 
 /*# sourceMappingURL=styles.css.map */

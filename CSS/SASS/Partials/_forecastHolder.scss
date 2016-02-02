@@ -1,0 +1,63 @@
+#forecastHolder {
+  max-width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 950px;
+  border: 1px solid #666;
+  .dayHolder {
+    display: block;
+    float: left;
+    width: 25%;
+    height: 100%;
+    background-color: $white;
+    border-right: 1px solid #666;
+    &:last-child{border-right: 0;}
+    .AM, .PM{
+      width: 100%;
+      height: 50%;
+      padding: 10px;
+    }
+    .AM{
+     > .dayName {
+      text-align: center;
+      } //end .dayName
+      >.icon {
+        width: 18%;
+        height: auto;
+        margin: 0 41%;
+        padding: 10px;
+      }
+    } //end AM
+    .PM {
+      h2 {
+        text-align: center;
+      }
+      >.icon {
+        width: 18%; 
+        height: auto;
+        margin: 0 41%;
+        padding: 10px;
+      }
+    } //end .PM
+  } //end dayHolder
+} //end forecastHolder
+.dayMessage, .nightMessage {
+  font-size: 1.2rem;
+}
+@media (max-width: 760px){
+  #forecastHolder {
+    height: auto;
+    > .dayHolder {
+      width: 100%;
+      height: auto;
+      float: none;
+      margin-bottom: 10px;
+      > .AM, > .PM {
+        width: 49%;
+        float: left;
+      }
+    }
+  }
+}
