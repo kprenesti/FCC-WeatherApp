@@ -39,14 +39,14 @@
        }
     }
     .AM{
-      border-right: 1px dotted grey;
+      //border-right: 1px dotted grey;
       &:last-child {
         border-right: none;
       }
 
     } //end AM
     .PM {
-      border-left: 1px dotted grey;
+    //  border-left: 1px dotted grey;
       // padding-bottom: 20px;
       } //end .PM
   } //end dayHolder
