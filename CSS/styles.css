@@ -130,17 +130,17 @@ header {
     font-size: 2rem; }
   header #weather_status_form {
     background-color: #275882;
-    padding: 20px;
+    padding: 20px 10px;
     height: 70px;
     margin: 30px 0;
     text-align: center; }
-    header #weather_status_form span.checkboxLabel {
-      font-size: 1.2em;
-      margin-right: 10px;
-      font-weight: bold;
-      color: #FAFAFA; }
-    header #weather_status_form #unitSwitcher {
-      margin-left: 10px; }
+    header #weather_status_form div {
+      margin: 0 10px;
+      display: inline-block; }
+      header #weather_status_form div span.checkboxLabel {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #FAFAFA; }
     header #weather_status_form #country, header #weather_status_form #states {
       display: inline-block;
       max-width: 25%;
