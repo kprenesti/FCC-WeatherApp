@@ -2,62 +2,76 @@
   max-width: 80vw;
   margin: 0 auto;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
-  height: 950px;
+  height: auto;
   border: 1px solid #666;
   .dayHolder {
     display: block;
     float: left;
-    width: 25%;
-    height: 100%;
+    width: 100%;
+    height: auto;
     background-color: $white;
-    border-right: 1px solid #666;
-    &:last-child{border-right: 0;}
+    border-bottom: 1px solid #666;
+    &:last-child{border-bottom: 0;}
     .AM, .PM{
-      width: 100%;
-      height: 50%;
+      box-sizing: border-box;
       padding: 10px;
+      width: 49%;
+      height: 100%;
+      float: left;
+      min-height: 120px;
+      &:after {
+        content: '';
+        clear: both;
+      }
+      > h2 {
+        font-size: 1.8rem;
+        text-align: center;
+       }
+       >.icon {
+         width: 50px;
+         height: 50px;
+         margin: 0 40%;
+       }
+       p {
+         text-align: center;
+       }
     }
     .AM{
-     > .dayName {
-      text-align: center;
-      } //end .dayName
-      >.icon {
-        width: 18%;
-        height: auto;
-        margin: 0 41%;
-        padding: 10px;
+      border-right: 1px dotted grey;
+      &:last-child {
+        border-right: none;
       }
+
     } //end AM
     .PM {
-      h2 {
-        text-align: center;
-      }
-      >.icon {
-        width: 18%; 
-        height: auto;
-        margin: 0 41%;
-        padding: 10px;
-      }
-    } //end .PM
+      border-left: 1px dotted grey;
+      // padding-bottom: 20px;
+      } //end .PM
   } //end dayHolder
 } //end forecastHolder
 .dayMessage, .nightMessage {
   font-size: 1.2rem;
 }
-@media (max-width: 760px){
-  #forecastHolder {
-    height: auto;
-    > .dayHolder {
-      width: 100%;
-      height: auto;
-      float: none;
-      margin-bottom: 10px;
-      > .AM, > .PM {
-        width: 49%;
-        float: left;
-      }
-    }
+@media (max-width: 375px){
+  //#forecastHolder{
+  // hr {
+  //   display: none;
+  // }
+  //   height: auto;
+  //   > .dayHolder {
+  //     width: 100%;
+  //     height: auto;
+  //     float: none;
+  //     margin-bottom: 10px;
+  //     > .AM, > .PM {
+  //       width: 49%;
+  //       float: left;
+  //     }
+  //   }
+  //}
+  :root {
+    font-size: 12px;
   }
 }

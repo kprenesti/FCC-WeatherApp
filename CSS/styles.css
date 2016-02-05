@@ -1,52 +1,6 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-body {
-  line-height: 1; }
-
-ol, ul {
-  list-style: none; }
-
-blockquote, q {
-  quotes: none; }
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none; }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  text-align: center; }
 
 :root {
   font-size: 16px; }
@@ -78,7 +32,7 @@ table {
 #todaysWeather {
   width: 80vw;
   margin: 0 auto;
-  background-color: white;
+  background-color: #FAFAFA;
   overflow: hidden;
   border: 1px solid #666;
   border-top: 0;
@@ -97,10 +51,11 @@ table {
       margin: 0 41%;
       padding: 10px; }
     #todaysWeather #presently h2 {
-      text-align: center; }
+      text-align: center;
+      padding-bottom: 10px; }
 
 footer {
-  background-color: #5489B6;
+  background-color: rgba(84, 137, 182, 0.7);
   padding: 20px;
   overflow: hidden;
   border-top: 2px solid #666; }
@@ -116,67 +71,115 @@ footer {
     text-decoration: none; }
 
 header {
-  height: 160px;
-  background-color: #5489B6;
-  color: white;
+  min-height: 160px;
+  background-color: rgba(84, 137, 182, 0.7);
+  color: #FAFAFA;
+  overflow: hidden;
   border-bottom: 2px solid #666; }
+  header h1 {
+    font-size: 2rem; }
   header #weather_status_form {
-    height: 20px;
-    padding-top: 30px;
+    background-color: #275882;
+    padding: 20px;
+    height: 70px;
+    margin: 30px 0;
     text-align: center; }
     header #weather_status_form span.checkboxLabel {
       font-size: 1.2em;
+      margin-right: 10px;
+      font-weight: bold;
+      color: #FAFAFA; }
+    header #weather_status_form #unitSwitcher {
+      margin-left: 10px; }
+    header #weather_status_form #country, header #weather_status_form #states {
+      display: inline-block;
+      max-width: 25%;
+      height: 100%;
+      padding: 5px;
+      background-color: #FAFAFA;
+      color: #275882;
+      font-weight: bold;
+      border: none; }
+    header #weather_status_form #country > option {
+      width: 100%; }
+    header #weather_status_form #location {
+      color: #275882;
+      font-weight: bold;
+      background-color: #FAFAFA;
+      display: inline-block;
+      text-align: left;
+      min-width: 30%;
+      height: 100%;
+      padding: 5px;
+      border: none;
+      margin: 0 5px; }
+    header #weather_status_form #subForm {
+      display: inline-block;
+      height: 100%;
+      padding: 0 10px;
+      background-color: #275882;
+      color: #FAFAFA;
       font-weight: bold; }
 
+@media screen and (max-width: 900px) {
+  #weather_status_form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 150px !important;
+    margin-bottom: 0; }
+
+  #country, #states, #location, #subForm {
+    max-height: 30px; } }
 #forecastHolder {
   max-width: 80vw;
   margin: 0 auto;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
-  height: 950px;
+  height: auto;
   border: 1px solid #666; }
   #forecastHolder .dayHolder {
     display: block;
     float: left;
-    width: 25%;
-    height: 100%;
-    background-color: white;
-    border-right: 1px solid #666; }
+    width: 100%;
+    height: auto;
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #666; }
     #forecastHolder .dayHolder:last-child {
-      border-right: 0; }
+      border-bottom: 0; }
     #forecastHolder .dayHolder .AM, #forecastHolder .dayHolder .PM {
-      width: 100%;
-      height: 50%;
-      padding: 10px; }
-    #forecastHolder .dayHolder .AM > .dayName {
-      text-align: center; }
-    #forecastHolder .dayHolder .AM > .icon {
-      width: 18%;
-      height: auto;
-      margin: 0 41%;
-      padding: 10px; }
-    #forecastHolder .dayHolder .PM h2 {
-      text-align: center; }
-    #forecastHolder .dayHolder .PM > .icon {
-      width: 18%;
-      height: auto;
-      margin: 0 41%;
-      padding: 10px; }
+      box-sizing: border-box;
+      padding: 10px;
+      width: 49%;
+      height: 100%;
+      float: left;
+      min-height: 120px; }
+      #forecastHolder .dayHolder .AM:after, #forecastHolder .dayHolder .PM:after {
+        content: '';
+        clear: both; }
+      #forecastHolder .dayHolder .AM > h2, #forecastHolder .dayHolder .PM > h2 {
+        font-size: 1.8rem;
+        text-align: center; }
+      #forecastHolder .dayHolder .AM > .icon, #forecastHolder .dayHolder .PM > .icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 40%; }
+      #forecastHolder .dayHolder .AM p, #forecastHolder .dayHolder .PM p {
+        text-align: center; }
+    #forecastHolder .dayHolder .AM {
+      border-right: 1px dotted grey; }
+      #forecastHolder .dayHolder .AM:last-child {
+        border-right: none; }
+    #forecastHolder .dayHolder .PM {
+      border-left: 1px dotted grey; }
 
 .dayMessage, .nightMessage {
   font-size: 1.2rem; }
 
-@media (max-width: 760px) {
-  #forecastHolder {
-    height: auto; }
-    #forecastHolder > .dayHolder {
-      width: 100%;
-      height: auto;
-      float: none;
-      margin-bottom: 10px; }
-      #forecastHolder > .dayHolder > .AM, #forecastHolder > .dayHolder > .PM {
-        width: 49%;
-        float: left; } }
+@media (max-width: 375px) {
+  :root {
+    font-size: 12px; } }
 
 /*# sourceMappingURL=styles.css.map */

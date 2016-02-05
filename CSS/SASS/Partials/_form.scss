@@ -1,15 +1,74 @@
 header {
-  height: 160px;
+  min-height: 160px;
   background-color: $headFoot;
   color: $white;
+  overflow: hidden;
   border-bottom: 2px solid #666;
+  h1 {
+    font-size: 2rem;
+  }
   #weather_status_form {
-    height: 20px;
-    padding-top: 30px;
+    background-color: #275882;
+    padding: 20px;
+    height: 70px;
+    margin: 30px 0;
     text-align: center;
     span.checkboxLabel {
       font-size: 1.2em;
+      margin-right: 10px;
+      font-weight: bold;
+      color: $white;
+    } //end span.checkboxLabel
+    #unitSwitcher {
+      margin-left: 10px;
+    }
+    #country, #states {
+      display: inline-block;
+      max-width: 25%;
+      height: 100%;
+      padding: 5px;
+      background-color: $white;
+      color: $formText;
+      font-weight: bold;
+      border: none;
+    }
+    #country > option {
+      width: 100%;
+    }
+    #location {
+      color: $formText;
+      font-weight: bold;
+      background-color: $white;
+      display: inline-block;
+      text-align: left;
+      min-width: 30%;
+      height: 100%;
+      padding: 5px;
+      border: none;
+      margin: 0 5px;
+    }
+    #subForm {
+      display: inline-block;
+      height: 100%;
+      padding: 0 10px;
+      background-color: $formText;
+      color: $white;
       font-weight: bold;
     }
+  } //end weather_status_form
+} //end header
+
+@media screen and(max-width:900px) {
+  #weather_status_form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 150px !important;
+    margin-bottom: 0;
   }
+  #country, #states, #location, #subForm {
+    max-height: 30px;
+  }
+
 }

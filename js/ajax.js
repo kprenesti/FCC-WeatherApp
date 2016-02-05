@@ -2,10 +2,10 @@ $(document).ready(function() {
   $('.promptCity').hide();
 
   $('#country').change(function(){
-    if($('#country option:selected').attr('value') !== 'US'){
-      $('#states').hide();
-    } else {
+    if($('#country option:selected').attr('value') == 'US'){
       $('#states').show();
+    } else {
+      $('#states').hide();
     }
   })
 
@@ -65,6 +65,9 @@ $(document).ready(function() {
 
   //Called from within getJSON
   function recieveData(data){
+    if(data.error){
+      console.log(data.error.description);
+    }
     // console.log(data);
     var kristaData = {
       city: data.current_observation.display_location.full,
@@ -78,54 +81,82 @@ $(document).ready(function() {
         url: data.current_observation.icon_url,
         weather: data.current_observation.weather
       },
-      forecast: data.forecast.txt_forecast.forecastday = [],
+      forecast: data.forecast.txt_forecast.forecastday,
     }; //end kristaData
     fillInFields(kristaData);
+    setBackgroundImage(kristaData);
+    buildForecast(kristaData);
     // console.log(kristaData);
   }
 
   //Called from within recieveData
   function fillInFields(kristaData){
-    console.log(kristaData);
-    var todayTemp, feelsLikeTemp, forecastText, i;
-    var completeForecastDiv = "";
+    var todayTemp, feelsLikeTemp;
     // console.log(forecastArray);
 
-      if($('input#unitSwitcher').is(':checked')){
-        todayTemp = kristaData.temp.degC[0];
-        feelsLikeTemp = kristaData.temp.degC[1];
-        $('.degree').text('C');
-      } else {
-        todayTemp = kristaData.temp.degF[0];
-        feelsLikeTemp = kristaData.temp.degF[1];
-        $('.degree').text('F');
-      }
+    if($('input#unitSwitcher').is(':checked')){
+      todayTemp = Math.round(kristaData.temp.degC[0]);
+      feelsLikeTemp = Math.round(kristaData.temp.degC[1]);
+      $('.degree').text('C');
+    } else {
+      todayTemp = Math.round(kristaData.temp.degF[0]);
+      feelsLikeTemp = Math.round(kristaData.temp.degF[1]);
+      $('.degree').text('F');
+    }
 
-    console.log(todayTemp, feelsLikeTemp, forecastText);
+    console.log(todayTemp, feelsLikeTemp);
     $('.updated').html(kristaData.today.lastObserved);
     $('.cityName').text(kristaData.city + "'s ");
     $('#presently >.icon').attr('src',kristaData.today.url);
     $('.temp-actual').text(todayTemp);
     $('.condition').text(kristaData.today.weather);
     $('.temp-feelsLike').text(feelsLikeTemp);
+  } //end fillInFields
 
-    //-------Begin building Forecast section----------//
-
-    for(i=0; i<kristaData.forecast.length; i+=2){
+  function buildForecast(kristaData){
+    var completeForecastDiv = "";
+    var Forecast = kristaData['forecast'];
+    var dayForecastText, nightForecastText;
+    for(i = 0; i < Forecast.length; i += 2){
+      console.log(Forecast);
       if($('input#unitSwitcher').is(':checked')){
-        forecastText = kristaData.forecast[i].fcttxt_metric;
+        dayForecastText = Forecast[i].fcttext_metric;
+        nightForecastText = Forecast[i+1].fcttext_metric
       } else {
-        forecastText = kristaData.forecast[i].fcttxt;
+        dayForecastText = Forecast[i].fcttext;
+        nightForecastText = Forecast[i+1].fcttext;
       }
-      console.log(forecastText);
-      completeForecastDiv += "<div class='dayHolder'><br>";
-      completeForecastDiv += "<div class='AM'><br>";
-      completeForecastDiv += "<h2 class='title'>"+kristaData.forecast[i].title+"</h2>";
-      completeForecastDiv += "<img src='"+ kristaData.forecast[i].icon_url +"' alt='"+ kristaData.forecast[i].icon +"'><br>";
-      completeForecastDiv += "<p class='weatherDesc'>"+forecastText+"</p>";
+      console.log(dayForecastText, nightForecastText);
+      completeForecastDiv += "<div class='dayHolder'>";
+      completeForecastDiv += "<div class='AM'>";
+      completeForecastDiv += "<h2 class='title'>"+Forecast[i].title+"</h2>";
+      completeForecastDiv += "<img class='icon' src='"+ Forecast[i].icon_url +"' alt='"+ Forecast[i].icon +"'>";
+      completeForecastDiv += "<p class='weatherDesc'>" + dayForecastText + "</p>";
       completeForecastDiv += "</div><!--end AM day"+i+"-->";
+      completeForecastDiv += "<div class='PM'>";
+      completeForecastDiv += "<h2 class='title'>"+Forecast[i+1].title+"</h2>";
+      completeForecastDiv += "<img class='icon' src='"+ Forecast[i+1].icon_url +"' alt='"+ Forecast[i+1].icon +"'>";
+      completeForecastDiv += "<p class='weatherDesc'>" + nightForecastText + "</p>";
+      completeForecastDiv += "</div><!--end PM night"+i+"-->";
+      completeForecastDiv += "</div><!--end dayHolder-->";
     } //end for loop
     return $('#forecastHolder').html(completeForecastDiv);
   } //end buildForecast
 
+
+  function setBackgroundImage(kristaData) {
+    var weather = kristaData.today.weather;
+    if(weather.indexOf('Drizzle') !== -1 || weather.indexOf('Rain') !== -1|| weather.indexOf('Thunderstorms') !== -1 || weather.indexOf('Spray') !== -1 || weather.indexOf('Precipitation') !== -1){
+      $('.bodywrap').css('background-image', 'url("http://newallpaper.net/wp-content/uploads/2015/04/ef9f528564810c7760a5e0828dd0a396-storms-rain-window-glass-reflection-abstract-bokeh-wallpaper.jpg")');
+    } else if(weather.indexOf('Snow') !== -1 || weather.indexOf('Ice') !== -1){
+      $('.bodywrap').css('background-image', 'url("http://mysalesbriefcase.com/wp-content/uploads/2015/01/snow-day-5.jpg")');
+      // $('*').css('color', '');
+    } else if(weather.indexOf('Cloud') !== -1|| weather.indexOf('Cloudy')!== -1 || weather.indexOf('Overcast')!== -1){
+      $('.bodywrap').css('background-image', 'url("https://c1.staticflickr.com/7/6023/5975465375_9c089b6085_b.jpg")');
+    } else if(weather.indexOf('Mist') !== -1 || weather.indexOf('Fog') !== -1 || weather.indexOf('Haze') !== -1){
+      $('.bodywrap').css('background-image', 'url("https://upload.wikimedia.org/wikipedia/commons/1/13/Flickr_-_don_macauley_-_Misty_Landscape.jpg")');
+    } else {
+      $('.bodywrap').css('background-image', 'url("https://upload.wikimedia.org/wikipedia/commons/1/16/Appearance_of_sky_for_weather_forecast,_Dhaka,_Bangladesh.JPG")');
+    }
+  } //end setBackgroundImage function
 }); //end ready

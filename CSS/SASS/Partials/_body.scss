@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 :root {
@@ -68,6 +69,7 @@
     }
     h2 {
       text-align: center;
+      padding-bottom: 10px;
     } //end h2
   } //end div#Currently
   } //end Section#todaysWeather
