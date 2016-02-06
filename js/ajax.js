@@ -29,7 +29,7 @@ $(document).ready(function() {
   //Called from within Ready and SubmitForm
   function getWeatherFromForm(){
     console.log('-------------------');
-    var req_url = "http://api.wunderground.com/api/11e9326259bb14c8/conditions/forecast/q/";
+    var req_url = "https://api.wunderground.com/api/11e9326259bb14c8/conditions/forecast/q/";
     var req_params, city, state, country;
     if($('#country option:selected').attr('value') === 'US'){
       if($('#location').val() !== '' && $('#states option:selected').attr('value') !== 'Nope'){
@@ -55,7 +55,7 @@ $(document).ready(function() {
     // console.log(position);
     console.log('-------------------');
     //$("#forecastHolder").hide();
-    var req_url = "http://api.wunderground.com/api/11e9326259bb14c8/conditions/forecast/q/";
+    var req_url = "https://api.wunderground.com/api/11e9326259bb14c8/conditions/forecast/q/";
     var req_params = position.coords.latitude + "," + position.coords.longitude;
     console.log(req_params);
     var json_req = encodeURI(req_url+req_params+".json");
